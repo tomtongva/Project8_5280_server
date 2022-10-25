@@ -35,7 +35,7 @@ async function findItems(region) {
 
       var items = await client
         .db("grocerystore").collection("discounts")
-        .find({"region": "produce"}).toArray();
+        .find({"region": region}).toArray();
         // .find({results: {$elemMatch: { name: "Pineapple" } } });
         // .find({ regions: {$elemMatch: {region: 'produce'}}});
   
