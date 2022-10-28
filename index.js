@@ -32,12 +32,13 @@ async function findItems(region) {
   
       console.log("findItems find discount for " + region);
 
-
-      var items = await client
-        .db("grocerystore").collection("discounts")
-        .find({"region": region}).toArray();
-        // .find({results: {$elemMatch: { name: "Pineapple" } } });
-        // .find({ regions: {$elemMatch: {region: 'produce'}}});
+      var items = "";
+      
+      if (region != "") 
+        items = await client.db("grocerystore").collection("discounts")
+          .find({"region": region}).toArray(); 
+      else
+        items = await client.db("grocerystore").collection("discounts").find({}).toArray();
   
         console.log(items);
       
